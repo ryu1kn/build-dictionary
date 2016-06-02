@@ -1,5 +1,5 @@
 
-# Build Your Dictionary
+# Build Dictionary
 
 ```sh
 $ node difficulty.js article.txt --dictionary dictionary.txt
