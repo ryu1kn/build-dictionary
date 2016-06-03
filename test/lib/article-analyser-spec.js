@@ -6,7 +6,8 @@ describe('ArticleAnalyser', () => {
     it('analyses the difficulty of an article against your dictionary', () => {
         const article = 'this is an article';
         const dictionary = 'this is an'.split(' ');
-        const articleAnalyser = new ArticleAnalyser({dictionary});
+        const tokeniser = {tokenise: text => text.split(' ')};
+        const articleAnalyser = new ArticleAnalyser({dictionary, tokeniser});
         const result = articleAnalyser.analyse(article);
         expect(result).to.be.eql({
             newWordCount: 1,
