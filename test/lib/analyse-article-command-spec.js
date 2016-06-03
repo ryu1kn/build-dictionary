@@ -17,13 +17,17 @@ describe('AnalyseArticleCommand', () => {
         const articleAnalyserFactory = {
             create: new StubBuilder().addReturns({dictionary: 'DICTIONARY_CONTENTS'}, articleAnalyser).toStub()
         };
+        const difficultyRater = {
+            rate: new StubBuilder().addReturns(articleAnalysis, 'DIFFICULTY').toStub()
+        };
         const analysisFormatter = {
-            format: sinon.stub().withArgs(articleAnalysis).returns('FORMATTED_ANALYSIS')
+            format: new StubBuilder().addReturns([articleAnalysis, 'DIFFICULTY'], 'FORMATTED_ANALYSIS').toStub()
         };
         const logger = {log: sinon.spy()};
         const analyseArticleCommand = new AnalyseArticleCommand({
             articleAnalyserFactory: articleAnalyserFactory,
             analysisFormatter: analysisFormatter,
+            difficultyRater: difficultyRater,
             fs: fs,
             logger: logger
         });

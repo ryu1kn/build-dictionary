@@ -9,9 +9,9 @@ describe('AnalysisFormatter', () => {
             newWordCount: 3,
             totalWordCount: 150
         };
-        expect(analysisFormatter.format(analysis)).to.be.equal([
+        expect(analysisFormatter.format(analysis, 'DIFFICULTY')).to.be.equal([
             'New words: 3/150 (2.0%)',
-            'Difficulty: Easy'
+            'Difficulty: DIFFICULTY'
         ].join('\n'));
     });
 
