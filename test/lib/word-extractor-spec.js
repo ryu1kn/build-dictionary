@@ -35,6 +35,14 @@ describe('WordExtractor', () => {
         ]);
     });
 
+    it('sees ";" is not a part of a word', () => {
+        const wordExtractor = new WordExtractor();
+        const text = 'this; so';
+        expect(wordExtractor.extract(text)).to.be.eql([
+            'this', 'so'
+        ]);
+    });
+
     it('sees "?" is not a part of a word', () => {
         const wordExtractor = new WordExtractor();
         const text = 'Why not?';
