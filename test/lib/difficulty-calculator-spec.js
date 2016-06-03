@@ -1,7 +1,5 @@
 
-const expect = require('chai').expect;
-
-const DifficultyCalculator = require('../lib/difficulty-calculator');
+const DifficultyCalculator = require('../../lib/difficulty-calculator');
 
 describe('DifficultyCalculator', () => {
 
