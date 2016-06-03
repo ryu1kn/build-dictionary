@@ -43,6 +43,30 @@ describe('WordExtractor', () => {
         ]);
     });
 
+    it('sees "(" or ")" is not a part of a word', () => {
+        const wordExtractor = new WordExtractor();
+        const text = 'a) b (c';
+        expect(wordExtractor.extract(text)).to.be.eql([
+            'a', 'b', 'c'
+        ]);
+    });
+
+    it('sees "[" or "]" is not a part of a word', () => {
+        const wordExtractor = new WordExtractor();
+        const text = 'a] b [c';
+        expect(wordExtractor.extract(text)).to.be.eql([
+            'a', 'b', 'c'
+        ]);
+    });
+
+    it('sees "{" or "}" is not a part of a word', () => {
+        const wordExtractor = new WordExtractor();
+        const text = 'a} b {c';
+        expect(wordExtractor.extract(text)).to.be.eql([
+            'a', 'b', 'c'
+        ]);
+    });
+
     it('sees "?" is not a part of a word', () => {
         const wordExtractor = new WordExtractor();
         const text = 'Why not?';
