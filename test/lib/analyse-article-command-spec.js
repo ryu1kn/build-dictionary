@@ -10,21 +10,26 @@ describe('AnalyseArticleCommand', () => {
                 .addReturns(['DICTIONARY_PATH', fileReadOptions], 'DICTIONARY_CONTENTS')
                 .addReturns(['ARTICLE_PATH', fileReadOptions], 'ARTICLE_CONTENTS').toStub()
         };
+        const articleAnalysis = {newWordCount: 3, totalWordCount: 150};
         const articleAnalyser = {
-            analyse: new StubBuilder().addReturns('ARTICLE_CONTENTS', {difficulty: 'easy'}).toStub()
+            analyse: new StubBuilder().addReturns('ARTICLE_CONTENTS', articleAnalysis).toStub()
         };
         const articleAnalyserFactory = {
             create: new StubBuilder().addReturns({dictionary: 'DICTIONARY_CONTENTS'}, articleAnalyser).toStub()
         };
+        const analysisFormatter = {
+            format: sinon.stub().withArgs(articleAnalysis).returns('FORMATTED_ANALYSIS')
+        };
         const logger = {log: sinon.spy()};
         const analyseArticleCommand = new AnalyseArticleCommand({
             articleAnalyserFactory: articleAnalyserFactory,
+            analysisFormatter: analysisFormatter,
             fs: fs,
             logger: logger
         });
         const argv = ['node', 'SCRIPT_NAME', '--dictionary', 'DICTIONARY_PATH', 'ARTICLE_PATH'];
         analyseArticleCommand.execute(argv);
-        expect(logger.log).to.have.been.calledWith({difficulty: 'easy'});
+        expect(logger.log).to.have.been.calledWith('FORMATTED_ANALYSIS');
     });
 
 });

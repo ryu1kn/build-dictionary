@@ -3,15 +3,15 @@
 
 ```sh
 $ node difficulty.js article.txt --dictionary dictionary.txt
-Words you know: 146/150 (98.0%)
+New words: 4/150 (2.0%)
 Difficulty: Easy
 ```
 
 Default threshold. Should be customisable.
 
 ```
- 0 -  90%: Too difficult
-90 -  95%: Difficult
-95 -  98%: Medium
-98 - 100%: Easy
+10 -    : Too difficult
+ 5 - 10%: Difficult
+ 2 -  5%: Medium
+ 0 -  2%: Easy
 ```
