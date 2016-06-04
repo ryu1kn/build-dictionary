@@ -114,4 +114,12 @@ describe('WordExtractor', () => {
             'at', 'tomorrow'
         ]);
     });
+
+    it('sees a roman numeral is not a word', () => {
+        const wordExtractor = new WordExtractor();
+        const text = 'i am ii) a iii) b iv) c xi) d';
+        expect(wordExtractor.extract(text)).to.be.eql([
+            'i', 'am', 'a', 'b', 'c', 'd'
+        ]);
+    });
 });
