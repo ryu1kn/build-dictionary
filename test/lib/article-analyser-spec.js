@@ -11,6 +11,7 @@ describe('ArticleAnalyser', () => {
         const result = articleAnalyser.analyse(article);
         expect(result).to.be.eql({
             newWordCount: 1,
+            newWords: ['article'],
             totalWordCount: 4
         });
     });
@@ -23,6 +24,7 @@ describe('ArticleAnalyser', () => {
         const result = articleAnalyser.analyse(article);
         expect(result).to.be.eql({
             newWordCount: 1,
+            newWords: ['new'],
             totalWordCount: 3
         });
     });

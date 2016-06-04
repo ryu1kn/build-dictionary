@@ -3,8 +3,13 @@
 
 ```sh
 $ node difficulty.js article.txt --dictionary dictionary.txt
-New words: 4/150 (2.0%)
+New words: 3/150 (2.0%)
 Difficulty: Easy
+
+= New words =
+haze
+Turnbull
+glibly
 ```
 
 Default threshold. Should be customisable.
