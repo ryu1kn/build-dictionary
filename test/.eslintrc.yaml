@@ -4,3 +4,5 @@ globals:
   expect: true
   sinon: true
   StubBuilder: true
+rules:
+  no-unused-expressions: off
