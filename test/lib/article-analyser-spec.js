@@ -1,11 +1,12 @@
 
+const _ = require('lodash');
 const ArticleAnalyser = require('../../lib/article-analyser');
 
 describe('ArticleAnalyser', () => {
 
     it('counts new words in a given text', () => {
         const article = 'this is an article';
-        const dictionary = 'this is an'.split(' ');
+        const dictionary = stubDictionary(['this', 'is', 'an']);
         const wordExtractor = {extract: text => text.split(' ')};
         const articleAnalyser = new ArticleAnalyser({dictionary, wordExtractor});
         const result = articleAnalyser.analyse(article);
@@ -18,7 +19,7 @@ describe('ArticleAnalyser', () => {
 
     it('counts the multiple same new words as 1', () => {
         const article = 'new new word';
-        const dictionary = ['old', 'word'];
+        const dictionary = stubDictionary(['old', 'word']);
         const wordExtractor = {extract: text => text.split(' ')};
         const articleAnalyser = new ArticleAnalyser({dictionary, wordExtractor});
         const result = articleAnalyser.analyse(article);
@@ -28,4 +29,8 @@ describe('ArticleAnalyser', () => {
             totalWordCount: 3
         });
     });
+
+    function stubDictionary(knownWords) {
+        return {exists: _.includes.bind(null, knownWords)};
+    }
 });

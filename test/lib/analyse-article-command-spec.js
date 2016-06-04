@@ -15,7 +15,7 @@ describe('AnalyseArticleCommand', () => {
             analyse: new StubBuilder().addReturns('ARTICLE_CONTENTS', articleAnalysis).toStub()
         };
         const articleAnalyserFactory = {
-            create: new StubBuilder().addReturns({dictionary: 'DICTIONARY_CONTENTS'}, articleAnalyser).toStub()
+            create: sinon.stub().returns(articleAnalyser)
         };
         const difficultyRater = {
             rate: new StubBuilder().addReturns(articleAnalysis, 'DIFFICULTY').toStub()
