@@ -6,6 +6,7 @@
   "scripts": {
     "coverage": "istanbul cover ./node_modules/.bin/_mocha -- test --recursive",
     "lint": "eslint .",
+    "prep": "npm run lint && npm test",
     "test": "mocha test --recursive"
   },
   "keywords": [],
