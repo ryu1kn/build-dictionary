@@ -17,19 +17,6 @@ describe('ArticleAnalyser', () => {
         });
     });
 
-    it('counts the multiple same new words as 1', () => {
-        const article = 'new new word';
-        const dictionary = stubDictionary(['old', 'word']);
-        const wordExtractor = {extract: text => text.split(' ')};
-        const articleAnalyser = new ArticleAnalyser({dictionary, wordExtractor});
-        const result = articleAnalyser.analyse(article);
-        expect(result).to.be.eql({
-            newWordCount: 1,
-            newWords: ['new'],
-            totalWordCount: 3
-        });
-    });
-
     function stubDictionary(knownWords) {
         return {exists: _.includes.bind(null, knownWords)};
     }

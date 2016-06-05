@@ -13,4 +13,14 @@ describe('WordExtractor', () => {
         ]);
     });
 
+    it('counts the multiple same words as 1', () => {
+        const tokeniser = {tokenise: text => text.split(' ')};
+        const wordClassifier = {isWord: () => true};
+        const wordExtractor = new WordExtractor({tokeniser, wordClassifier});
+        const text = 'this is a long long long text';
+        expect(wordExtractor.extract(text)).to.be.eql([
+            'this', 'is', 'a', 'long', 'text'
+        ]);
+    });
+
 });
