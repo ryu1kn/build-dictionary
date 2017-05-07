@@ -1,4 +1,6 @@
 
+[![Build Status](https://travis-ci.org/ryu1kn/build-dictionary.svg?branch=master)](https://travis-ci.org/ryu1kn/build-dictionary)
+
 # Build Dictionary
 
 ## Usage
