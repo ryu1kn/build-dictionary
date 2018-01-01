@@ -28,8 +28,9 @@ describe('AnalyseArticleCommand', () => {
         const fileReadOptions = {encoding: 'utf8'};
         const readFileSync = sinon.stub();
         pathContentsPairs.forEach(pathContentsPair => {
-            readFileSync.withArgs(pathContentsPair[0], fileReadOptions)
-                        .returns(pathContentsPair[1]);
+            readFileSync
+                .withArgs(pathContentsPair[0], fileReadOptions)
+                .returns(pathContentsPair[1]);
         });
         return {readFileSync};
     }

@@ -83,7 +83,7 @@ describe('Tokeniser', () => {
         ]);
     });
 
-    it('sees \'"\" is not a part of a word', () => {
+    it('sees \'"\' is not a part of a word', () => {
         const tokeniser = new Tokeniser();
         const text = 'thought "why not"';
         expect(tokeniser.tokenise(text)).to.be.eql([
