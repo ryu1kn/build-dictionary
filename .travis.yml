@@ -1,8 +1,11 @@
 language: node_js
 node_js:
-  - "6.9.1"
+  - "8.9.3"
 install:
-  - npm install
+  - yarn install
 script:
-  - npm run lint
-  - npm test
+  - yarn run prep
+notifications:
+  email:
+    on_success: change
+    on_failure: always

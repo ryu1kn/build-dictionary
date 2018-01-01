@@ -1,7 +1,7 @@
 /node_modules/
 /coverage/
 /.vscode/
+/.idea/
 /tmp/
 jsconfig.json
-npm-debug.log
 __*
