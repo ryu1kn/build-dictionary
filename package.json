@@ -28,7 +28,11 @@
     "sinon-chai": "^2.14.0"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
+    "lodash.compact": "^3.0.1",
+    "lodash.flatmap": "^4.5.0",
+    "lodash.isempty": "^4.4.0",
+    "lodash.negate": "^3.0.2",
+    "lodash.uniq": "^4.5.0",
     "minimist": "^1.2.0"
   }
 }
