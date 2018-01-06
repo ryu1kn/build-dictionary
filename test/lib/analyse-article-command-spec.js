@@ -1,7 +1,7 @@
 const AnalyseArticleCommand = require('../../lib/analyse-article-command')
 
 describe('AnalyseArticleCommand', () => {
-  it('analyse the difficulty of an article based on the dictionary', () => {
+  it('analyse the difficulty of an article based on the dictionary', async () => {
     const fs = stubFs([
       ['DICTIONARY_PATH', 'word1\nword2'],
       ['ARTICLE_PATH', 'word1\nunknown\nword2']
@@ -18,7 +18,7 @@ describe('AnalyseArticleCommand', () => {
       'DICTIONARY_PATH',
       'ARTICLE_PATH'
     ]
-    analyseArticleCommand.execute(argv)
+    await analyseArticleCommand.execute(argv)
     expect(logger.log).to.have.been.calledWith(
       [
         'New words: 1/3 (33.3%)',
@@ -32,12 +32,12 @@ describe('AnalyseArticleCommand', () => {
 
   function stubFs (pathContentsPairs) {
     const fileReadOptions = { encoding: 'utf8' }
-    const readFileSync = sinon.stub()
+    const readFile = sinon.stub()
     pathContentsPairs.forEach(pathContentsPair => {
-      readFileSync
+      readFile
         .withArgs(pathContentsPair[0], fileReadOptions)
-        .returns(pathContentsPair[1])
+        .callsArgWith(2, null, pathContentsPair[1])
     })
-    return { readFileSync }
+    return { readFile }
   }
 })
