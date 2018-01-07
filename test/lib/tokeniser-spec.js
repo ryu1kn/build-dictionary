@@ -66,4 +66,10 @@ describe('Tokeniser', () => {
     const text = 'thought "why not"'
     expect(tokeniser.tokenise(text)).to.be.eql(['thought', 'why', 'not'])
   })
+
+  it('sees "\'" is not a part of a word', () => {
+    const tokeniser = new Tokeniser()
+    const text = "'Rot' is"
+    expect(tokeniser.tokenise(text)).to.be.eql(['Rot', 'is'])
+  })
 })
