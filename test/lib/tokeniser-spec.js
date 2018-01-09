@@ -1,3 +1,5 @@
+const { expect } = require('chai')
+
 const Tokeniser = require('../../lib/tokeniser')
 
 describe('Tokeniser', () => {

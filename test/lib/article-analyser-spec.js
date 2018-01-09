@@ -1,3 +1,5 @@
+const { expect } = require('chai')
+
 const ArticleAnalyser = require('../../lib/article-analyser')
 
 describe('ArticleAnalyser', () => {

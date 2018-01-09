@@ -1,3 +1,5 @@
+const { expect } = require('chai')
+
 const ReportGenerator = require('../../lib/report-generator')
 
 describe('ReportGenerator', () => {

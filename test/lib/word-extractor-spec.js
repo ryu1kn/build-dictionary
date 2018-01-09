@@ -1,3 +1,5 @@
+const { expect } = require('chai')
+
 const WordExtractor = require('../../lib/word-extractor')
 
 describe('WordExtractor', () => {

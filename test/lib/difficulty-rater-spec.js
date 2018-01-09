@@ -1,3 +1,5 @@
+const { expect } = require('chai')
+
 const DifficultyRater = require('../../lib/difficulty-rater')
 
 describe('DifficultyRater', () => {

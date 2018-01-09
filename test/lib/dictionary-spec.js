@@ -1,3 +1,5 @@
+const { expect } = require('chai')
+
 const Dictionary = require('../../lib/dictionary')
 
 describe('Dictionary', () => {

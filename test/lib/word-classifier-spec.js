@@ -1,3 +1,5 @@
+const { expect } = require('chai')
+
 const WordClassifier = require('../../lib/word-classifier')
 
 describe('WordClassifier', () => {
