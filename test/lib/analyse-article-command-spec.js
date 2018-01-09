@@ -1,3 +1,5 @@
+const td = require('testdouble')
+
 const AnalyseArticleCommand = require('../../lib/analyse-article-command')
 
 describe('AnalyseArticleCommand', () => {
@@ -6,11 +8,8 @@ describe('AnalyseArticleCommand', () => {
       ['DICTIONARY_PATH', 'word1\nword2'],
       ['ARTICLE_PATH', 'word1\nunknown\nword2']
     ])
-    const logger = { log: sinon.spy() }
-    const analyseArticleCommand = new AnalyseArticleCommand({
-      fs: fs,
-      logger: logger
-    })
+    const logger = td.object('log')
+    const analyseArticleCommand = new AnalyseArticleCommand({ fs, logger })
     const argv = [
       'node',
       'SCRIPT_NAME',
@@ -19,24 +18,27 @@ describe('AnalyseArticleCommand', () => {
       'ARTICLE_PATH'
     ]
     await analyseArticleCommand.execute(argv)
-    expect(logger.log).to.have.been.calledWith(
-      [
-        'New words: 1/3 (33.3%)',
-        'Difficulty: Very difficult',
-        '',
-        '= New words =',
-        'unknown'
-      ].join('\n')
+
+    td.verify(
+      logger.log(
+        [
+          'New words: 1/3 (33.3%)',
+          'Difficulty: Very difficult',
+          '',
+          '= New words =',
+          'unknown'
+        ].join('\n')
+      )
     )
   })
 
   function stubFs (pathContentsPairs) {
     const fileReadOptions = { encoding: 'utf8' }
-    const readFile = sinon.stub()
+    const readFile = td.function('readFile')
     pathContentsPairs.forEach(pathContentsPair => {
-      readFile
-        .withArgs(pathContentsPair[0], fileReadOptions)
-        .callsArgWith(2, null, pathContentsPair[1])
+      td
+        .when(readFile(pathContentsPair[0], fileReadOptions))
+        .thenCallback(null, pathContentsPair[1])
     })
     return { readFile }
   }
