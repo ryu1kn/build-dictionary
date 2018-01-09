@@ -13,8 +13,6 @@
   "author": "Ryuichi Inagaki",
   "devDependencies": {
     "chai": "^4.1.2",
-    "chai-as-promised": "^7.1.1",
-    "chai-subset": "^1.6.0",
     "eslint": "^4.14.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.8.0",
