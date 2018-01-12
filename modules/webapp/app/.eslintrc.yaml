@@ -1,0 +1,13 @@
+env:
+  browser: true
+
+# It's better if below could be put under `components` but then
+# the `app.js` unnecessarily gets alerted
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+plugins:
+  - react
+rules:
+  react/jsx-uses-vars: error
+  react/jsx-uses-react: error
