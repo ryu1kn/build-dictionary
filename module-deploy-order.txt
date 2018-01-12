@@ -1,0 +1,2 @@
+deployment-outputs-store
+artifact-store

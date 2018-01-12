@@ -1,0 +1,33 @@
+{
+  "moduleName": "deployment-output-store",
+  "config": {
+    "script": "node -p \"JSON.stringify(require('./module-config.js'))\""
+  },
+  "tasks": [
+    {
+      "id": "deployment-output-bucket",
+      "type": "cf-stack",
+      "stackName": "builddictionary-deployment-outputs-store",
+      "stackTemplate": {
+        "script": "cp ./template.json $TEMPLATE_OUTPUT_FILE",
+        "envVars": {
+          "TEMPLATE_OUTPUT_FILE": {"$ref": "#/_templateOutputFile"}
+        }
+      },
+      "stackParams": {
+        "BucketName": {"$ref": "#/_deploymentConfig/deploymentOutputsBucket"}
+      }
+    },
+    {
+      "id": "protect-stack",
+      "type": "custom",
+      "run": {
+        "script":
+          "aws cloudformation update-termination-protection --enable-termination-protection --stack-name builddictionary-deployment-outputs-store --region $TASK_REGION",
+        "envVars": {
+          "TASK_REGION": {"$ref": "#/_taskRegion"}
+        }
+      }
+    }
+  ]
+}

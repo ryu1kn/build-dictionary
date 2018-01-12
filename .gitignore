@@ -1,7 +1,8 @@
-/node_modules/
-/coverage/
-/.vscode/
 /.idea/
+/.kumo/
+/.vscode/
+/coverage/
 /tmp/
-jsconfig.json
 __*
+jsconfig.json
+node_modules/
