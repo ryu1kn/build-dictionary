@@ -37,3 +37,13 @@ is
 a
 dictionary
 ```
+
+## Deploying System
+
+This is currently not integrated into the build pipeline.
+
+```sh
+$ BUILD_NUMBER=build-number AWS_REGION=deploy-region ENV_NAME=env-name ./deploy-system.sh
+```
+
+Currently the webapp version is just a hello world app
