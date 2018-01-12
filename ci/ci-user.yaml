@@ -1,0 +1,66 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: BuildDictionary CI group/user
+Parameters:
+  CiUserName:
+    Description: User name for CI
+    Type: String
+Resources:
+  CiUser:
+    Type: "AWS::IAM::User"
+    Properties:
+      Groups:
+        - !Ref CiGroup
+      Path: "/"
+      UserName: !Ref CiUserName
+  CiGroup:
+    Type: "AWS::IAM::Group"
+    Properties:
+      GroupName: builddictionary-ci
+      Path: "/"
+      Policies:
+        - PolicyName: builddictionary-ci-20180113
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: Stmt1489901204001
+                Effect: Allow
+                Action:
+                  - apigateway:DELETE
+                  - apigateway:GET
+                  - apigateway:HEAD
+                  - apigateway:OPTIONS
+                  - apigateway:PATCH
+                  - apigateway:POST
+                  - apigateway:PUT
+                  - cloudformation:CreateStack
+                  - cloudformation:DeleteStack
+                  - cloudformation:DescribeStacks
+                  - cloudformation:UpdateStack
+                  - cloudformation:UpdateTerminationProtection
+                  - iam:CreateRole
+                  - iam:DeleteRole
+                  - iam:GetRole
+                  - iam:DeleteRolePolicy
+                  - iam:PassRole
+                  - iam:PutRolePolicy
+                  - kms:CreateGrant
+                  - kms:Encrypt
+                  - kms:Decrypt
+                  - lambda:AddPermission
+                  - lambda:CreateFunction
+                  - lambda:DeleteFunction
+                  - lambda:GetFunction
+                  - lambda:GetFunctionConfiguration
+                  - lambda:RemovePermission
+                  - lambda:UpdateFunctionCode
+                  - lambda:UpdateFunctionConfiguration
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:DeleteLogGroup
+                  - logs:DeleteLogStream
+                  - logs:DescribeLogGroups
+                  - logs:DescribeLogStreams
+                  - logs:PutLogEvents
+                  - logs:PutRetentionPolicy
+                  - s3:*
+                Resource: "*"
