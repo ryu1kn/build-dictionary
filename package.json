@@ -7,11 +7,13 @@
     "coverage": "istanbul cover ./node_modules/.bin/_mocha -- test --recursive",
     "lint": "eslint .",
     "prep": "yarn run lint && yarn test",
-    "test": "mocha test --recursive"
+    "test": "mocha test --recursive",
+    "travis-build": "./travis-build.sh"
   },
   "keywords": [],
   "author": "Ryuichi Inagaki",
   "devDependencies": {
+    "buildmate": "^0.0.3",
     "chai": "^4.1.2",
     "eslint": "^4.14.0",
     "eslint-config-standard": "^10.2.1",

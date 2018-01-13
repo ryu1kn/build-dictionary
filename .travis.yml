@@ -6,10 +6,17 @@ env:
   - AWS_REGION=ap-southeast-2
   - secure: RWu5loFUy/igAOGlPKrKG1Ifx4mMdg6XQ6SSFTE3TzAMhQVbm37inLA1YqOKYfsFVKx3aQFG31G2uT+1T7k9UaRL+UXTi2PzVWQpQI8dza1XHFsPqAKPfAWVpnONX8ZJbodAQWg6oMZ1XNclZOQ+ttXvKxjx/Z6iExrp20SiHMsssHOHm7S6DB2itTHNvVqkFfVUgnkvwhGFICuIOTg/KOWkfY9xyR6wL/q4pB1te7bNcB66K0VkIK9mFCxkg5xiIa25xSSBk+YNNBaQ4KsO4+itUxvhbXZ+NfIuwOaIEwVCbDJyTwkA9KpSLnAYUkpdj4NAv/BPv7OgMMs01H/3E/ECKbQncZ/46yhYDKs/SD4O23x5XQRXlqF09WSZJM03A/waoM551atYLIwuWb4vGLeuI05RYsHSXf8hO3qu09hw9xt/FDqAAomG8j3omgaFLvbLbolPJXXcK7cbyWqAojztpPHw/itXtSxvqGQkRm3e9eDg0SVnOhH/w3tRCNI4t4oYagvwApLIP61Ujsqyo1++kqUj8VWdbqLLombVHJ7pWTcgTUsd/+/p60sD0LomcS44fPg4+IZt02VWaREVWg6GB7MlO9jQfjPNnqBh8HwMaT6DBEhZvRbztWEzRsIHfVZY4FH8RSah+kDPM9L5NVppBwH2g53OmEBj3A08xWs=
   - secure: M6xybL/M2MVKls/L0n/580COqQMvY6dTvMd5R4wQO+DdvDOMEC3nbMGrLaVupOBPi9D1pve8IhlpJpBi7hQ/ddtFFiBF/Fk45uEBMKG5jndzSv2T3gsrtMsx4X4lLhm1WnHLFxqE6eOKGeA1tU+lSXzU7QJuBTHdEMrp/gMupeL4OagRNwtACnYl365daWFtQzK34aqDC6xi91Kqj+19E+nRc1TV+LN5To9ZOzFnQDhYJMx9Unh9E9g/rB/1eFwHfhT9P3O6fYpg+ugtXABfpCqqz1D4PZvJtlTFJ4RDI7a1bXbdLWWr0a4X0yOew5yIUW3X/pYUEBwf0T28IxQ071MD4gK1tzhmnfjubthkoqb+1W4O1p/TrON9djDfI2cBHYwPdYgt7Yt/S9VKBmHZ+ZGPGjsdTrFG/o3d6lZo7YGFRTlN3fwnWhAcQn6JMMqtVXv+8jwN6cimKjB39ZGFgH1bZh/PIh/K0KF0dzVFyJZhupFrL5UOA3V1RbpatNKgovCIcYMDA/4ZhpntY+KbJ/SFc4Mn5mHfUtQg/I3eUMMbelduOGt2sON4w/Q0lH7sfjcqng6GYL3HL4u1Opsj8PBPMSnmEJUR8tbJZ3ELfO3SI2dU89glhTMEfkbmDS9bXwj9ZHhn+zwZv2SHK0ravgKn9bt7kNiLkkMeWJ2rayc=
+before_install:
+- wget https://bootstrap.pypa.io/get-pip.py
+- sudo python get-pip.py
+- sudo pip install awscli
+- aws configure set s3.signature_version s3v4
+- yarn global add kumo
+- kumo install
 install:
 - yarn install
 script:
-- yarn run prep
+- yarn run travis-build
 notifications:
   email:
     on_success: change
