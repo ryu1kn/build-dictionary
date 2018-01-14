@@ -1,0 +1,8 @@
+{
+  "packages": [
+    {
+      "name": "backend-app/app",
+      "package-script": "cd __dist && zip -q -r9 $KUMO_PACKAGE_OUTPUT_FILE *"
+    }
+  ]
+}

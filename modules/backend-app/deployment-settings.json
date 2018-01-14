@@ -1,0 +1,42 @@
+{
+  "moduleName": "backend-app",
+  "config": {
+    "script": "node -p \"JSON.stringify(require('./module-config.js'))\""
+  },
+  "outputsStore": {
+    "type": "s3-bucket",
+    "region": {"$ref": "#/_args/region"},
+    "bucket": {"$ref": "#/_deploymentConfig/deploymentOutputsBucket"},
+    "prefix": {"Fn::Join": ["/", [{"$ref": "#/_env"}, "backend-app"]]}
+  },
+  "dataSources": {
+    "artifact-store": {
+      "type": "s3-bucket",
+      "region": {"$ref": "#/_args/region"},
+      "bucket": {"$ref": "#/_deploymentConfig/deploymentOutputsBucket"},
+      "key": "artifact-store"
+    }
+  },
+  "tasks": [
+    {
+      "id": "build-lambda",
+      "type": "custom",
+      "run": {
+        "script": "./build.sh"
+      }
+    },
+    {
+      "id": "upload-lambda",
+      "type": "custom",
+      "run": {
+        "script": "kumo upload-package --build-number $BUILD_NUMBER --region $TASK_REGION --upload-bucket $UPLOAD_BUCKET --output $TASK_OUTPUTS_FILE",
+        "envVars": {
+          "TASK_REGION": {"$ref": "#/_taskRegion"},
+          "UPLOAD_BUCKET": {"$ref": "#/_dataSourceData/artifact-store/Bucket"},
+          "TASK_OUTPUTS_FILE": {"$ref": "#/_taskOutputsFile"}
+        }
+      },
+      "outputsName": "packages"
+    }
+  ]
+}
