@@ -10,7 +10,7 @@
     "type": "s3-bucket",
     "region": {"$ref": "#/_args/region"},
     "bucket": {"$ref": "#/_deploymentConfig/deploymentOutputsBucket"},
-    "prefix": "log-store"
+    "prefix": {"Fn::Join": ["/", [{"$ref": "#/_env"}, "log-store"]]}
   },
   "tasks": [
     {
@@ -32,9 +32,10 @@
       "type": "custom",
       "run": {
         "script":
-          "aws cloudformation update-termination-protection --enable-termination-protection --stack-name builddictionary-log-store --region $TASK_REGION",
+          "aws cloudformation update-termination-protection --enable-termination-protection --stack-name $LOG_STORE_STACK_NAME --region $TASK_REGION",
         "envVars": {
-          "TASK_REGION": {"$ref": "#/_taskRegion"}
+          "TASK_REGION": {"$ref": "#/_taskRegion"},
+          "LOG_STORE_STACK_NAME": {"Fn::Join": ["-", ["builddictionary", {"$ref": "#/_env"}, "log-store"]]}
         }
       }
     }
