@@ -29,10 +29,11 @@
       "id": "upload-lambda",
       "type": "custom",
       "run": {
-        "script": "kumo upload-package --build-number $BUILD_NUMBER --region $TASK_REGION --upload-bucket $UPLOAD_BUCKET --output $TASK_OUTPUTS_FILE",
+        "script": "node upload-artifact > $TASK_OUTPUTS_FILE",
         "envVars": {
-          "TASK_REGION": {"$ref": "#/_taskRegion"},
-          "UPLOAD_BUCKET": {"$ref": "#/_dataSourceData/artifact-store/Bucket"},
+          "AWS_REGION": {"$ref": "#/_taskRegion"},
+          "ARTIFACT_BUCKET": {"$ref": "#/_dataSourceData/artifact-store/Bucket"},
+          "ARTIFACT_BASE_PATH": "backend-app",
           "TASK_OUTPUTS_FILE": {"$ref": "#/_taskOutputsFile"}
         }
       },
