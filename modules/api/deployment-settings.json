@@ -1,0 +1,82 @@
+{
+  "moduleName": "api",
+  "config": {
+    "script": "node -p \"JSON.stringify(require('./module-config/$ENV.js'))\"",
+    "envVars": {
+      "ENV": {"$ref": "#/_env"}
+    }
+  },
+  "outputsStore": {
+    "type": "s3-bucket",
+    "region": {"$ref": "#/_args/region"},
+    "bucket": {"$ref": "#/_deploymentConfig/deploymentOutputsBucket"},
+    "prefix": {"Fn::Join": ["/", [{"$ref": "#/_env"}, "api"]]}
+  },
+  "dataSources": {
+    "backend-app": {
+      "type": "s3-bucket",
+      "region": {"$ref": "#/_args/region"},
+      "bucket": {"$ref": "#/_deploymentConfig/deploymentOutputsBucket"},
+      "key": {"Fn::Join": ["/", [{"$ref": "#/_env"}, "backend-app"]]}
+    },
+    "log-store": {
+      "type": "s3-bucket",
+      "region": {"$ref": "#/_args/region"},
+      "bucket": {"$ref": "#/_deploymentConfig/deploymentOutputsBucket"},
+      "key": {"Fn::Join": ["/", [{"$ref": "#/_env"}, "log-store"]]}
+    },
+    "webapp": {
+      "type": "s3-bucket",
+      "region": {"$ref": "#/_args/region"},
+      "bucket": {"$ref": "#/_deploymentConfig/deploymentOutputsBucket"},
+      "key": {"Fn::Join": ["/", [{"$ref": "#/_env"}, "webapp"]]}
+    }
+  },
+  "tasks": [
+    {
+      "id": "fetch-certificate-arn",
+      "type": "custom",
+      "run": {
+        "script": "aws acm list-certificates --region us-east-1 --query CertificateSummaryList | jq \"map(select(.DomainName == \\\"$CERT_DOMAIN_NAME\\\") | .CertificateArn)[0]\" > $TASK_OUTPUTS_FILE",
+        "envVars": {
+          "TASK_OUTPUTS_FILE": {"$ref": "#/_taskOutputsFile"},
+          "CERT_DOMAIN_NAME": {"$ref": "#/_deploymentConfig/certDomainName"}
+        }
+      },
+      "outputsName": "certificateArn"
+    },
+    {
+      "id": "deploy-api",
+      "type": "cf-stack",
+      "stackName": {"Fn::Join": ["-", ["builddictionary", {"$ref": "#/_env"}, "api"]]},
+      "stackTemplate": {
+        "script": "cp ./template.json $TEMPLATE_OUTPUT_FILE",
+        "envVars": {
+          "TEMPLATE_OUTPUT_FILE": {"$ref": "#/_templateOutputFile"}
+        }
+      },
+      "stackParams": {
+        "EnvName": {"$ref": "#/_env"},
+        "DomainName": {"$ref": "#/_deploymentConfig/domainName"},
+        "HostedZoneId": {"$ref": "#/_deploymentConfig/hostedZoneId"},
+        "CertificateArn": {"$ref": "#/_deploymentOutputs/certificateArn"},
+        "WebappEndpoint": {"Fn::Join": ["", ["https://", {"$ref": "#/_dataSourceData/webapp/WebappDomain"}]]},
+        "LoggingBucket": {"$ref": "#/_dataSourceData/log-store/Bucket"},
+        "LambdaS3Bucket": {"$ref": "#/_dataSourceData/backend-app/packages/backend-app/s3bucket"},
+        "LambdaS3Key": {"$ref": "#/_dataSourceData/backend-app/packages/backend-app/s3key"}
+      }
+    },
+    {
+      "id": "create-new-deployment",
+      "type": "custom",
+      "run": {
+        "script": "aws apigateway create-deployment --rest-api-id $REST_API_ID --stage-name $STAGE_NAME --region $TASK_REGION",
+        "envVars": {
+          "TASK_REGION": {"$ref": "#/_taskRegion"},
+          "REST_API_ID": {"$ref": "#/_deploymentOutputs/RestApiId"},
+          "STAGE_NAME": {"$ref": "#/_deploymentOutputs/ApiStageName"}
+        }
+      }
+    }
+  ]
+}
