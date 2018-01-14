@@ -1,4 +1,5 @@
 deployment-outputs-store
+log-store
 artifact-store
 webapp
 backend-app
