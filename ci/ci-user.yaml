@@ -25,6 +25,7 @@ Resources:
               - Sid: Stmt1489901204001
                 Effect: Allow
                 Action:
+                  - acm:ListCertificates
                   - apigateway:DELETE
                   - apigateway:GET
                   - apigateway:HEAD
