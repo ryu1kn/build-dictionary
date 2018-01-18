@@ -38,6 +38,13 @@ Resources:
                   - cloudformation:DescribeStacks
                   - cloudformation:UpdateStack
                   - cloudformation:UpdateTerminationProtection
+                  - cloudfront:CreateCloudFrontOriginAccessIdentity
+                  - cloudfront:CreateDistribution
+                  - cloudfront:DeleteDistribution
+                  - cloudfront:GetDistribution
+                  - cloudfront:GetDistributionConfig
+                  - cloudfront:TagResource
+                  - cloudfront:UpdateDistribution
                   - iam:CreateRole
                   - iam:DeleteRole
                   - iam:GetRole
@@ -63,5 +70,8 @@ Resources:
                   - logs:DescribeLogStreams
                   - logs:PutLogEvents
                   - logs:PutRetentionPolicy
+                  - route53:ChangeResourceRecordSets
+                  - route53:GetChange
+                  - route53:GetHostedZone
                   - s3:*
                 Resource: "*"
