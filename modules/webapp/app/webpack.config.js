@@ -72,10 +72,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
-    }),
     new HtmlWebpackPlugin({
       template: `${__dirname}/index.ejs`,
       filename: `${BUILD_DIR}/index.html`

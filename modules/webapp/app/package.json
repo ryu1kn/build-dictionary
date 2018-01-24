@@ -2,7 +2,6 @@
   "name": "builddictionary-webapp",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "jquery": "^1.12.4",
     "react": "~15.4.1",
     "react-dom": "~15.4.1",
     "whatwg-fetch": "~2.0.3"
