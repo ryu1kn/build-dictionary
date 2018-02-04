@@ -1,5 +1,6 @@
 {
   "name": "builddictionary-webapp-module",
+  "private": true,
   "config": {
     "BUILD_DIR": "__build",
     "APP_BUILD_DIR": "app/__dist"

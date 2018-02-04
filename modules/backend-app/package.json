@@ -1,5 +1,6 @@
 {
   "name": "backend-app",
+  "private": true,
   "config": {
     "BUILD_DIR": "./__dist"
   },

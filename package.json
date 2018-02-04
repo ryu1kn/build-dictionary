@@ -2,6 +2,7 @@
   "name": "build-dictionary",
   "version": "0.1.0",
   "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "coverage": "istanbul cover ./node_modules/.bin/_mocha -- test --recursive",
