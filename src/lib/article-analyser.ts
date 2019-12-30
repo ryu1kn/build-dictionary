@@ -32,8 +32,8 @@ export class ArticleAnalyser {
       }))
     )
     const newWords = wordInfos
-      .filter((wordInfo: any) => wordInfo.isNewWord)
-      .map((wordInfo: any) => wordInfo.word)
+      .filter(wordInfo => wordInfo.isNewWord)
+      .map(wordInfo => wordInfo.word)
     return _uniq(newWords)
   }
 }

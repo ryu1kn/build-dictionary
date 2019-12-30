@@ -15,6 +15,7 @@ unknown
 EOF
 )
 
+yarn run compile
 actual=$("$this_dir/../bin/analyse-article" --dictionary fixtures/dictionary.txt fixtures/article.txt)
 
 if [[ "$actual" = "$expected" ]] ; then

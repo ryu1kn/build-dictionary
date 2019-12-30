@@ -1,7 +1,7 @@
 import { ReadFile } from './types'
 
 export class Dictionary {
-  private _wordList: any
+  private _wordList?: string[]
 
   constructor(private readonly filePath: string,
               private readonly readFile: ReadFile) {
