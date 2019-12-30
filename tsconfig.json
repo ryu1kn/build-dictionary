@@ -6,10 +6,10 @@
     "outDir": "dist",
     "sourceMap": true,
     "rootDir": "src",
-    "strict": false,
+    "strict": true,
     "noUnusedLocals": true,
     "noImplicitAny": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedParameters": true
