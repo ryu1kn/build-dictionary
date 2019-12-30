@@ -1,9 +1,9 @@
 import { Tokeniser } from './tokeniser'
 import { WordClassifier } from './word-classifier'
 
-const _flatMap = require('lodash.flatmap')
-const _uniq = require('lodash.uniq')
-const _negate = require('lodash.negate')
+import _flatMap = require('lodash.flatmap')
+import _uniq = require('lodash.uniq')
+import _negate = require('lodash.negate')
 
 const RE_UPPER_CASE = /[A-Z]/
 const RE_EMPTY_LINE = /^\s*$/

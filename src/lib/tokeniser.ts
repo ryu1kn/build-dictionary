@@ -1,4 +1,4 @@
-const _compact = require('lodash.compact')
+import _compact = require('lodash.compact')
 
 const RE_WORD_DELIMITER = /[ .,:;?'"(){}\[\]#\n]/ // eslint-disable-line no-useless-escape
 

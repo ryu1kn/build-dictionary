@@ -3,7 +3,7 @@ import {ReportGenerator} from './report-generator'
 import {Dictionary} from './dictionary'
 import {DifficultyRater} from './difficulty-rater'
 import { ReadFile, Logger } from './types'
-const minimist = require('minimist')
+import minimist = require('minimist')
 
 export class AnalyseArticleCommand {
   constructor(private readonly readFile: ReadFile,

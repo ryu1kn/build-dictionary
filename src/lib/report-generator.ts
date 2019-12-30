@@ -1,8 +1,8 @@
 import { Analysis } from './article-analyser'
 import { Difficulty } from './difficulty-rater'
 
-const _isEmpty = require('lodash.isempty')
-const _negate = require('lodash.negate')
+import _isEmpty = require('lodash.isempty')
+import _negate = require('lodash.negate')
 
 const SECTION_SEPARATOR = '\n\n'
 

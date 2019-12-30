@@ -1,7 +1,6 @@
 import { WordExtractor } from './word-extractor'
 import { Dictionary } from './dictionary'
-
-const _uniq = require('lodash.uniq')
+import _uniq = require('lodash.uniq')
 
 export interface Analysis {
   newWordCount: number,

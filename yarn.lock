@@ -138,6 +138,51 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
+"@types/lodash.compact@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash.compact/-/lodash.compact-3.0.6.tgz#a4c356372f51fb39ff48eb4f014a19f39f674ab5"
+  integrity sha512-0pDKTX4alTyxH85Y5Al4YzS8oriqBQykADW6zLAHkZwNBMPXFIhdE2ctg0Z2GVcZsABxo5CI/J3vmHrFkdQBfA==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash.flatmap@^4.5.6":
+  version "4.5.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash.flatmap/-/lodash.flatmap-4.5.6.tgz#5f1ea80cebe403f0fbfcc1b5ad75cd09dd8b5785"
+  integrity sha512-ELNrUL9q+MB7AACaHivWIsKDFDgYhHE3/svXhqvDJgONtn2c467Cy87nEb7CEDvfaGCPv91lPaW596I8s5oiNQ==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash.isempty@^4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash.isempty/-/lodash.isempty-4.4.6.tgz#48a5576985727d9b85d59a60199d6b11ac756a3e"
+  integrity sha512-AauKrFlA4z3Usog5HLGDupKzkCP7h5KXGlfAcRGUfvTmL7guVuEzDSNI6lYJ7syO7J2RE2F47179pSLr26UHIw==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash.negate@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash.negate/-/lodash.negate-3.0.6.tgz#808cc3af9761ecf0dc3a9cb292e39c341ee32669"
+  integrity sha512-CzLOjizSCgk7X5k5dKGWG8AlDLz8839XRVhGvDCopA3blRG2tTFYXdeQuvvPuDObHl36WQ2GQMfpVdeuW/bbdw==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash.uniq@^4.5.6":
+  version "4.5.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash.uniq/-/lodash.uniq-4.5.6.tgz#adb052f6c7eeb38b920c13166e7a972dd960b4c5"
+  integrity sha512-XHNMXBtiwsWZstZMyxOYjr0e8YYWv0RgPlzIHblTuwBBiWo2MzWVaTBihtBpslb5BglgAWIeBv69qt1+RTRW1A==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.149"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
+  integrity sha512-ijGqzZt/b7BfzcK9vTrS6MFljQRPn5BFWOx8oE0GYxribu6uV+aA9zZuXI1zc/etK9E8nrgdoF2+LgUw7+9tJQ==
+
+"@types/minimist@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.0.tgz#69a23a3ad29caf0097f06eda59b361ee2f0639f6"
+  integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
+
 "@types/mocha@^5.2.7":
   version "5.2.7"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.7.tgz#315d570ccb56c53452ff8638738df60726d5b6ea"
