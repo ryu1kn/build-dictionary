@@ -8,18 +8,18 @@ export class Dictionary {
   }
 
   async exists (word: string) {
-    const wordList = await this._loadCachedWordList()
+    const wordList = await this.loadCachedWordList()
     return wordList.includes(word.toLowerCase())
   }
 
-  private async _loadCachedWordList () {
+  private async loadCachedWordList () {
     if (this._wordList) return this._wordList
 
-    this._wordList = await this._loadWordList()
+    this._wordList = await this.loadWordList()
     return this._wordList
   }
 
-  private async _loadWordList () {
+  private async loadWordList () {
     const dictionaryFile = await this.readFile(this.filePath)
     return dictionaryFile.split('\n')
   }

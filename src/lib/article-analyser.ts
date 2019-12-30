@@ -16,7 +16,7 @@ export class ArticleAnalyser {
 
   async analyse (article: string): Promise<Analysis> {
     const words = this.wordExtractor.extract(article)
-    const newWords = await this._collectNewWords(words)
+    const newWords = await this.collectNewWords(words)
     return {
       newWordCount: newWords.length,
       newWords,
@@ -24,7 +24,7 @@ export class ArticleAnalyser {
     }
   }
 
-  private async _collectNewWords (words: string[]) {
+  private async collectNewWords (words: string[]) {
     const wordInfos = await Promise.all(
       words.map(async word => ({
         word,

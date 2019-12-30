@@ -6,10 +6,10 @@ import { Dictionary } from './dictionary'
 
 export class ArticleAnalyserFactory {
   create (dictionary: Dictionary) {
-    return new ArticleAnalyser(this._createWordExtractor(), dictionary)
+    return new ArticleAnalyser(this.createWordExtractor(), dictionary)
   }
 
-  private _createWordExtractor () {
+  private createWordExtractor () {
     return new WordExtractor(new Tokeniser(), new WordClassifier())
   }
 }

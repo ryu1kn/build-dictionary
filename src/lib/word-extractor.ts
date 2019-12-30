@@ -20,23 +20,23 @@ export class WordExtractor {
       .filter(sentence => !RE_EMPTY_LINE.test(sentence))
     const generalWords = _flatMap(
       sentences,
-      this._extractFromSentence.bind(this)
+      this.extractFromSentence.bind(this)
     )
     return _uniq(generalWords)
   }
 
-  private _extractFromSentence (sentence: string) {
+  private extractFromSentence (sentence: string) {
     const [firstWord, ...remainingWords] = this.tokeniser
       .tokenise(sentence)
       .filter(this.wordClassifier.isWord)
     const generalWords = [
       firstWord,
-      ...remainingWords.filter(_negate(this._isProperNoun))
+      ...remainingWords.filter(_negate(this.isProperNoun))
     ]
     return _uniq(generalWords)
   }
 
-  private _isProperNoun (word: string) {
+  private isProperNoun (word: string) {
     return RE_UPPER_CASE.test(word[0])
   }
 }
