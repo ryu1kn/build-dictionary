@@ -1,8 +1,8 @@
-const {ArticleAnalyserFactory} = require('./article-analyser-factory')
-const {ReportGenerator} = require('./report-generator')
-const {Dictionary} = require('./dictionary')
-const {DifficultyRater} = require('./difficulty-rater')
-const {FileReader} = require('./file-reader')
+import {ArticleAnalyserFactory} from './article-analyser-factory'
+import {ReportGenerator} from './report-generator'
+import {Dictionary} from './dictionary'
+import {DifficultyRater} from './difficulty-rater'
+import {FileReader} from './file-reader'
 const minimist = require('minimist')
 
 export class AnalyseArticleCommand {
@@ -31,4 +31,3 @@ export class AnalyseArticleCommand {
     this._logger.log(new ReportGenerator().generate(analysis, difficulty))
   }
 }
-

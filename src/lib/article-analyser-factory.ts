@@ -1,7 +1,7 @@
-const {ArticleAnalyser} = require('./article-analyser')
-const {Tokeniser} = require('./tokeniser')
-const {WordExtractor} = require('./word-extractor')
-const {WordClassifier} = require('./word-classifier')
+import {ArticleAnalyser} from './article-analyser'
+import {Tokeniser} from './tokeniser'
+import {WordExtractor} from './word-extractor'
+import {WordClassifier} from './word-classifier'
 
 export class ArticleAnalyserFactory {
   create (params) {

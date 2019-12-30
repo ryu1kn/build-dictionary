@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 
-const {DifficultyRater} = require('../../lib/difficulty-rater')
+import {DifficultyRater} from '../../lib/difficulty-rater'
 
 describe('DifficultyRater', () => {
   it("says it's very difficult to read if new words are more than 10%", () => {

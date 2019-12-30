@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 
-const {ArticleAnalyser} = require('../../lib/article-analyser')
+import {ArticleAnalyser} from '../../lib/article-analyser'
 
 describe('ArticleAnalyser', () => {
   it('counts new words in a given text', async () => {

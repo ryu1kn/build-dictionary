@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 
-const {WordClassifier} = require('../../lib/word-classifier')
+import {WordClassifier} from '../../lib/word-classifier'
 
 describe('WordClassifier', () => {
   it('sees numbers are not a word', () => {

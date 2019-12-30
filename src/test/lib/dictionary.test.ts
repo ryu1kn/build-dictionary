@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 
-const {Dictionary} = require('../../lib/dictionary')
+import {Dictionary} from '../../lib/dictionary'
 
 describe('Dictionary', () => {
   it('returns true if a word is known', async () => {
