@@ -1,5 +1,7 @@
+import { ReadFile } from './types'
+
 export class Dictionary {
-  _readFile: (path: string) => Promise<string>
+  _readFile: ReadFile
   _filePath: any
   _wordList: any
 

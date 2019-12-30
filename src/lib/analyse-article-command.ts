@@ -2,15 +2,12 @@ import {ArticleAnalyserFactory} from './article-analyser-factory'
 import {ReportGenerator} from './report-generator'
 import {Dictionary} from './dictionary'
 import {DifficultyRater} from './difficulty-rater'
+import { ReadFile, Logger } from './types'
 const minimist = require('minimist')
 
 export class AnalyseArticleCommand {
-  _readFile: (path: string) => Promise<string>
-  _logger: any
-
-  constructor (params) {
-    this._readFile = params.readFile
-    this._logger = params.logger
+  constructor(private readonly readFile: ReadFile,
+              private readonly logger: Logger) {
   }
 
   async execute (argv) {
@@ -19,13 +16,13 @@ export class AnalyseArticleCommand {
     const articlePath = parsedArgv._[0]
 
     const dictionary = new Dictionary({
-      readFile: this._readFile,
+      readFile: this.readFile,
       filePath: dictionaryPath
     })
     const articleAnalyser = new ArticleAnalyserFactory().create({ dictionary })
-    const article = await this._readFile(articlePath)
+    const article = await this.readFile(articlePath)
     const analysis = await articleAnalyser.analyse(article)
     const difficulty = new DifficultyRater().rate(analysis)
-    this._logger.log(new ReportGenerator().generate(analysis, difficulty))
+    this.logger.log(new ReportGenerator().generate(analysis, difficulty))
   }
 }
