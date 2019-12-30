@@ -3,7 +3,7 @@ const RE_SYMBOL = /-/
 const RE_CODE_LIKE = /^\d+[^\d]+/
 const RE_ROMAN_NUMERAL = /^i[ivx]+$|^[vx][ivx]*$/
 
-class WordClassifier {
+export class WordClassifier {
   isWord (token) {
     return (
       !RE_SYMBOL.test(token) &&
@@ -13,5 +13,3 @@ class WordClassifier {
     )
   }
 }
-
-module.exports = WordClassifier

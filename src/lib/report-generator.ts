@@ -3,7 +3,7 @@ const _negate = require('lodash.negate')
 
 const SECTION_SEPARATOR = '\n\n'
 
-class ReportGenerator {
+export class ReportGenerator {
   generate (analysis, difficulty) {
     const summarySection = this._getSummarySection(analysis, difficulty)
     const newWordsSection = this._getNewWordSection(analysis)
@@ -34,5 +34,3 @@ class ReportGenerator {
       .join(SECTION_SEPARATOR)
   }
 }
-
-module.exports = ReportGenerator

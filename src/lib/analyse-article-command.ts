@@ -1,7 +1,7 @@
 const {ArticleAnalyserFactory} = require('./article-analyser-factory')
-const ReportGenerator = require('./report-generator')
+const {ReportGenerator} = require('./report-generator')
 const {Dictionary} = require('./dictionary')
-const DifficultyRater = require('./difficulty-rater')
+const {DifficultyRater} = require('./difficulty-rater')
 const {FileReader} = require('./file-reader')
 const minimist = require('minimist')
 

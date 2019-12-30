@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 
-const ReportGenerator = require('../../lib/report-generator')
+const {ReportGenerator} = require('../../lib/report-generator')
 
 describe('ReportGenerator', () => {
   it('returns a string describing the result of analysis', () => {

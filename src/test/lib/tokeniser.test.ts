@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 
-const Tokeniser = require('../../lib/tokeniser')
+const {Tokeniser} = require('../../lib/tokeniser')
 
 describe('Tokeniser', () => {
   it('tokenises a list of words from a text', () => {

@@ -1,7 +1,7 @@
 const {ArticleAnalyser} = require('./article-analyser')
-const Tokeniser = require('./tokeniser')
+const {Tokeniser} = require('./tokeniser')
 const {WordExtractor} = require('./word-extractor')
-const WordClassifier = require('./word-classifier')
+const {WordClassifier} = require('./word-classifier')
 
 export class ArticleAnalyserFactory {
   create (params) {
