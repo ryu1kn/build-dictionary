@@ -1,3 +1,6 @@
+import { Tokeniser } from './tokeniser'
+import { WordClassifier } from './word-classifier'
+
 const _flatMap = require('lodash.flatmap')
 const _uniq = require('lodash.uniq')
 const _negate = require('lodash.negate')
@@ -7,12 +10,8 @@ const RE_EMPTY_LINE = /^\s*$/
 const RE_SENTENCE_DELIMETER = /\.\s+/
 
 export class WordExtractor {
-  _tokeniser: any
-  _wordClassifier: any
-
-  constructor (params) {
-    this._tokeniser = params.tokeniser
-    this._wordClassifier = params.wordClassifier
+  constructor(private readonly tokeniser: Tokeniser,
+              private readonly wordClassifier: WordClassifier) {
   }
 
   extract (text) {
@@ -27,9 +26,9 @@ export class WordExtractor {
   }
 
   _extractFromSentence (sentence) {
-    const [firstWord, ...remainingWords] = this._tokeniser
+    const [firstWord, ...remainingWords] = this.tokeniser
       .tokenise(sentence)
-      .filter(this._wordClassifier.isWord)
+      .filter(this.wordClassifier.isWord)
     const generalWords = [
       firstWord,
       ...remainingWords.filter(_negate(this._isProperNoun))

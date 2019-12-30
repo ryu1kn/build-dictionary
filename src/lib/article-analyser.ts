@@ -1,16 +1,15 @@
+import { WordExtractor } from './word-extractor'
+import { Dictionary } from './dictionary'
+
 const _uniq = require('lodash.uniq')
 
 export class ArticleAnalyser {
-  _dictionary: any
-  _wordExtractor: any
-
-  constructor (params) {
-    this._dictionary = params.dictionary
-    this._wordExtractor = params.wordExtractor
+  constructor(private readonly wordExtractor: WordExtractor,
+              private readonly dictionary: Dictionary) {
   }
 
   async analyse (article) {
-    const words = this._wordExtractor.extract(article)
+    const words = this.wordExtractor.extract(article)
     const newWords = await this._collectNewWords(words)
     return {
       newWordCount: newWords.length,
@@ -23,7 +22,7 @@ export class ArticleAnalyser {
     const wordInfos = await Promise.all(
       words.map(async word => ({
         word,
-        isNewWord: !await this._dictionary.exists(word)
+        isNewWord: !await this.dictionary.exists(word)
       }))
     )
     const newWords = wordInfos

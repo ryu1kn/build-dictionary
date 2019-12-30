@@ -15,11 +15,8 @@ export class AnalyseArticleCommand {
     const dictionaryPath = parsedArgv.dictionary
     const articlePath = parsedArgv._[0]
 
-    const dictionary = new Dictionary({
-      readFile: this.readFile,
-      filePath: dictionaryPath
-    })
-    const articleAnalyser = new ArticleAnalyserFactory().create({ dictionary })
+    const dictionary = new Dictionary(dictionaryPath, this.readFile)
+    const articleAnalyser = new ArticleAnalyserFactory().create(dictionary)
     const article = await this.readFile(articlePath)
     const analysis = await articleAnalyser.analyse(article)
     const difficulty = new DifficultyRater().rate(analysis)

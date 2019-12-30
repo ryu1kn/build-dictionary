@@ -1,6 +1,8 @@
 import { expect } from 'chai'
 
 import {ArticleAnalyser} from '../../lib/article-analyser'
+import { WordExtractor } from '../../lib/word-extractor'
+import { Dictionary } from '../../lib/dictionary'
 
 describe('ArticleAnalyser', () => {
   it('counts new words in a given text', async () => {
@@ -28,6 +30,6 @@ describe('ArticleAnalyser', () => {
       exists: word => Promise.resolve(knownWords.includes(word))
     }
     const wordExtractor = { extract: text => text.split(' ') }
-    return new ArticleAnalyser({ dictionary, wordExtractor })
+    return new ArticleAnalyser(wordExtractor as WordExtractor, dictionary as Dictionary)
   }
 })

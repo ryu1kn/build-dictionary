@@ -1,13 +1,10 @@
 import { ReadFile } from './types'
 
 export class Dictionary {
-  _readFile: ReadFile
-  _filePath: any
-  _wordList: any
+  private _wordList: any
 
-  constructor ({ readFile, filePath }) {
-    this._readFile = readFile
-    this._filePath = filePath
+  constructor(private readonly filePath: string,
+              private readonly readFile: ReadFile) {
   }
 
   async exists (word) {
@@ -23,7 +20,7 @@ export class Dictionary {
   }
 
   async _loadWordList () {
-    const dictionaryFile = await this._readFile(this._filePath)
+    const dictionaryFile = await this.readFile(this.filePath)
     return dictionaryFile.split('\n')
   }
 }
