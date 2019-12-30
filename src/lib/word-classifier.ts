@@ -4,7 +4,7 @@ const RE_CODE_LIKE = /^\d+[^\d]+/
 const RE_ROMAN_NUMERAL = /^i[ivx]+$|^[vx][ivx]*$/
 
 export class WordClassifier {
-  isWord (token) {
+  isWord (token: string) {
     return (
       !RE_SYMBOL.test(token) &&
       !RE_NUMBER.test(token) &&

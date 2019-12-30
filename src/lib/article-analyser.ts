@@ -3,12 +3,18 @@ import { Dictionary } from './dictionary'
 
 const _uniq = require('lodash.uniq')
 
+export interface Analysis {
+  newWordCount: number,
+  newWords: string[],
+  totalWordCount: number
+}
+
 export class ArticleAnalyser {
   constructor(private readonly wordExtractor: WordExtractor,
               private readonly dictionary: Dictionary) {
   }
 
-  async analyse (article) {
+  async analyse (article: string): Promise<Analysis> {
     const words = this.wordExtractor.extract(article)
     const newWords = await this._collectNewWords(words)
     return {
@@ -18,7 +24,7 @@ export class ArticleAnalyser {
     }
   }
 
-  async _collectNewWords (words) {
+  async _collectNewWords (words: string[]) {
     const wordInfos = await Promise.all(
       words.map(async word => ({
         word,

@@ -10,10 +10,10 @@ describe('ReportGenerator', () => {
       newWords: ['NEW_WORD1', 'NEW_WORD2', 'NEW_WORD3'],
       totalWordCount: 150
     }
-    equal(reportGenerator.generate(analysis, 'DIFFICULTY'),
+    equal(reportGenerator.generate(analysis, 'Easy'),
       [
         'New words: 3/150 (2.0%)',
-        'Difficulty: DIFFICULTY',
+        'Difficulty: Easy',
         '',
         '= New words =',
         'NEW_WORD1',
@@ -27,11 +27,11 @@ describe('ReportGenerator', () => {
     const reportGenerator = new ReportGenerator()
     const analysis = {
       newWordCount: 0,
-      newWords: [],
+      newWords: [] as string[],
       totalWordCount: 150
     }
-    equal(reportGenerator.generate(analysis, 'DIFFICULTY'),
-      ['New words: 0/150 (0.0%)', 'Difficulty: DIFFICULTY'].join('\n')
+    equal(reportGenerator.generate(analysis, 'Easy'),
+      ['New words: 0/150 (0.0%)', 'Difficulty: Easy'].join('\n')
     )
   })
 })

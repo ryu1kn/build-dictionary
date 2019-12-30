@@ -1,5 +1,9 @@
+import { Analysis } from './article-analyser'
+
+export type Difficulty = 'Very difficult' | 'Difficult' | 'Medium' | 'Easy'
+
 export class DifficultyRater {
-  rate (analysis) {
+  rate (analysis: Analysis): Difficulty {
     const score = analysis.newWordCount / analysis.totalWordCount
     return score > 0.1
       ? 'Very difficult'

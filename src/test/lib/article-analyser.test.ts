@@ -26,9 +26,9 @@ describe('ArticleAnalyser', () => {
 
   function createArticleAnalyser (knownWords: string[]) {
     const dictionary = {
-      exists: word => Promise.resolve(knownWords.includes(word))
+      exists: (word: string) => Promise.resolve(knownWords.includes(word))
     }
-    const wordExtractor = { extract: text => text.split(' ') }
+    const wordExtractor = { extract: (text: string) => text.split(' ') }
     return new ArticleAnalyser(wordExtractor as WordExtractor, dictionary as Dictionary)
   }
 })
