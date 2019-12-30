@@ -1,10 +1,10 @@
 export class Dictionary {
-  _fileReader: any
+  _readFile: (path: string) => Promise<string>
   _filePath: any
   _wordList: any
 
-  constructor ({ fileReader, filePath }) {
-    this._fileReader = fileReader
+  constructor ({ readFile, filePath }) {
+    this._readFile = readFile
     this._filePath = filePath
   }
 
@@ -21,7 +21,7 @@ export class Dictionary {
   }
 
   async _loadWordList () {
-    const dictionaryFile = await this._fileReader.read(this._filePath)
+    const dictionaryFile = await this._readFile(this._filePath)
     return dictionaryFile.split('\n')
   }
 }
