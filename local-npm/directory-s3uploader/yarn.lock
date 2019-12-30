@@ -135,13 +135,6 @@ crc@^3.4.4:
   dependencies:
     buffer "^5.1.0"
 
-"directory-s3uploader@file:../../local-npm/directory-s3uploader":
-  version "0.0.1"
-  dependencies:
-    archiver "^3.1.1"
-    aws-sdk "^2.188.0"
-    s3-upload-stream "^1.0.7"
-
 end-of-stream@^1.4.1:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.4.tgz#5ae64a5f45057baf3626ec14da0ca5e4b2431eb0"
