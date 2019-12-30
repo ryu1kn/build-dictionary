@@ -6,7 +6,10 @@ const RE_UPPER_CASE = /[A-Z]/
 const RE_EMPTY_LINE = /^\s*$/
 const RE_SENTENCE_DELIMETER = /\.\s+/
 
-class WordExtractor {
+export class WordExtractor {
+  _tokeniser: any
+  _wordClassifier: any
+
   constructor (params) {
     this._tokeniser = params.tokeniser
     this._wordClassifier = params.wordClassifier
@@ -38,5 +41,3 @@ class WordExtractor {
     return RE_UPPER_CASE.test(word[0])
   }
 }
-
-module.exports = WordExtractor

@@ -1,4 +1,8 @@
-class Dictionary {
+export class Dictionary {
+  _fileReader: any
+  _filePath: any
+  _wordList: any
+
   constructor ({ fileReader, filePath }) {
     this._fileReader = fileReader
     this._filePath = filePath
@@ -21,5 +25,3 @@ class Dictionary {
     return dictionaryFile.split('\n')
   }
 }
-
-module.exports = Dictionary

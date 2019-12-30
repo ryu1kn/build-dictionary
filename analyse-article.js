@@ -1,4 +1,4 @@
-const AnalyseArticleCommand = require('./lib/analyse-article-command')
+const {AnalyseArticleCommand} = require('./dist/lib/analyse-article-command')
 
 const command = new AnalyseArticleCommand({
   fs: require('fs'),

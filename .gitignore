@@ -1,7 +1,9 @@
 /.idea/
 /.kumo/
+/.nyc_output/
 /.vscode/
 /coverage/
+/dist/
 /tmp/
 __*
 jsconfig.json

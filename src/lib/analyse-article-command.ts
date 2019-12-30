@@ -1,11 +1,14 @@
-const ArticleAnalyserFactory = require('./article-analyser-factory')
+const {ArticleAnalyserFactory} = require('./article-analyser-factory')
 const ReportGenerator = require('./report-generator')
-const Dictionary = require('./dictionary')
+const {Dictionary} = require('./dictionary')
 const DifficultyRater = require('./difficulty-rater')
-const FileReader = require('./file-reader')
+const {FileReader} = require('./file-reader')
 const minimist = require('minimist')
 
-class AnalyseArticleCommand {
+export class AnalyseArticleCommand {
+  _fs: any
+  _logger: any
+
   constructor (params) {
     this._fs = params.fs
     this._logger = params.logger
@@ -29,4 +32,3 @@ class AnalyseArticleCommand {
   }
 }
 
-module.exports = AnalyseArticleCommand

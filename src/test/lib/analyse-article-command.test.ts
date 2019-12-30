@@ -1,6 +1,6 @@
 const td = require('testdouble')
 
-const AnalyseArticleCommand = require('../../lib/analyse-article-command')
+const {AnalyseArticleCommand} = require('../../lib/analyse-article-command')
 
 describe('AnalyseArticleCommand', () => {
   it('analyse the difficulty of an article based on the dictionary', async () => {

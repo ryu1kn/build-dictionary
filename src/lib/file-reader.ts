@@ -1,6 +1,8 @@
 const util = require('util')
 
-class FileReader {
+export class FileReader {
+  _readFile: any
+
   constructor ({ fs }) {
     this._readFile = util.promisify(fs.readFile)
   }
@@ -9,5 +11,3 @@ class FileReader {
     return this._readFile(filePath, { encoding: 'utf8' })
   }
 }
-
-module.exports = FileReader

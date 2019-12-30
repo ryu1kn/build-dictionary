@@ -1,6 +1,6 @@
-const { expect } = require('chai')
+import { expect } from 'chai'
 
-const WordExtractor = require('../../lib/word-extractor')
+const {WordExtractor} = require('../../lib/word-extractor')
 
 describe('WordExtractor', () => {
   it('extracts a list of words from a text', () => {

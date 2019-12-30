@@ -1,6 +1,9 @@
 const _uniq = require('lodash.uniq')
 
-class ArticleAnalyser {
+export class ArticleAnalyser {
+  _dictionary: any
+  _wordExtractor: any
+
   constructor (params) {
     this._dictionary = params.dictionary
     this._wordExtractor = params.wordExtractor
@@ -24,10 +27,8 @@ class ArticleAnalyser {
       }))
     )
     const newWords = wordInfos
-      .filter(wordInfo => wordInfo.isNewWord)
-      .map(wordInfo => wordInfo.word)
+      .filter((wordInfo: any) => wordInfo.isNewWord)
+      .map((wordInfo: any) => wordInfo.word)
     return _uniq(newWords)
   }
 }
-
-module.exports = ArticleAnalyser

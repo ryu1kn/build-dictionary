@@ -1,9 +1,9 @@
-const ArticleAnalyser = require('./article-analyser')
+const {ArticleAnalyser} = require('./article-analyser')
 const Tokeniser = require('./tokeniser')
-const WordExtractor = require('./word-extractor')
+const {WordExtractor} = require('./word-extractor')
 const WordClassifier = require('./word-classifier')
 
-class ArticleAnalyserFactory {
+export class ArticleAnalyserFactory {
   create (params) {
     return new ArticleAnalyser({
       dictionary: params.dictionary,
@@ -18,5 +18,3 @@ class ArticleAnalyserFactory {
     })
   }
 }
-
-module.exports = ArticleAnalyserFactory

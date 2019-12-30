@@ -9,5 +9,5 @@ charset = utf-8
 trim_trailing_whitespace = true
 indent_size = 4
 
-[*.{js,json,yml,yaml}]
+[*.{js,json,ts,yml,yaml}]
 indent_size = 2
