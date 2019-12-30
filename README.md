@@ -6,14 +6,12 @@
 ## Usage
 
 ```sh
-$ node analyse-article article.txt --dictionary dictionary.txt
-New words: 3/150 (2.0%)
-Difficulty: Easy
+$ node analyse-article fixtures/article.txt --dictionary fixtures/dictionary.txt
+New words: 1/3 (33.3%)
+Difficulty: Very difficult
 
 = New words =
-haze
-Turnbull
-glibly
+unknown
 ```
 
 Default threshold. Should be customisable.
@@ -30,12 +28,9 @@ Default threshold. Should be customisable.
 A dictionary is just a file containing list of words you already know. One word per line
 
 ```sh
-$ cat dictionary.txt
-this
-file
-is
-a
-dictionary
+$ cat fixtures/dictionary.txt
+word1
+word2
 ```
 
 ## Deploying System
