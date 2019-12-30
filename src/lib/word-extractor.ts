@@ -25,7 +25,7 @@ export class WordExtractor {
     return _uniq(generalWords)
   }
 
-  _extractFromSentence (sentence: string) {
+  private _extractFromSentence (sentence: string) {
     const [firstWord, ...remainingWords] = this.tokeniser
       .tokenise(sentence)
       .filter(this.wordClassifier.isWord)
@@ -36,7 +36,7 @@ export class WordExtractor {
     return _uniq(generalWords)
   }
 
-  _isProperNoun (word: string) {
+  private _isProperNoun (word: string) {
     return RE_UPPER_CASE.test(word[0])
   }
 }

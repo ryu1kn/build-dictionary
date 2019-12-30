@@ -9,7 +9,7 @@ export class ArticleAnalyserFactory {
     return new ArticleAnalyser(this._createWordExtractor(), dictionary)
   }
 
-  _createWordExtractor () {
+  private _createWordExtractor () {
     return new WordExtractor(new Tokeniser(), new WordClassifier())
   }
 }

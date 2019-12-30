@@ -13,7 +13,7 @@ export class ReportGenerator {
     return this._convertToString([summarySection, newWordsSection])
   }
 
-  _getSummarySection (analysis: Analysis, difficulty: Difficulty): string[] {
+  private _getSummarySection (analysis: Analysis, difficulty: Difficulty): string[] {
     const newWordRatio = analysis.newWordCount / analysis.totalWordCount
     const newWordRatioPct = (newWordRatio * 100).toFixed(1)
     return [
@@ -24,13 +24,13 @@ export class ReportGenerator {
     ]
   }
 
-  _getNewWordSection (analysis: Analysis): string[] {
+  private _getNewWordSection (analysis: Analysis): string[] {
     return !_isEmpty(analysis.newWords)
       ? ['= New words =', ...analysis.newWords]
       : []
   }
 
-  _convertToString (sections: [string[], string[]]) {
+  private _convertToString (sections: [string[], string[]]) {
     return sections
       .filter(_negate(_isEmpty))
       .map(section => section.join('\n'))

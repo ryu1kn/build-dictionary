@@ -12,14 +12,14 @@ export class Dictionary {
     return wordList.includes(word.toLowerCase())
   }
 
-  async _loadCachedWordList () {
+  private async _loadCachedWordList () {
     if (this._wordList) return this._wordList
 
     this._wordList = await this._loadWordList()
     return this._wordList
   }
 
-  async _loadWordList () {
+  private async _loadWordList () {
     const dictionaryFile = await this.readFile(this.filePath)
     return dictionaryFile.split('\n')
   }

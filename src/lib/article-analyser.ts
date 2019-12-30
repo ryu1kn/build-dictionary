@@ -24,7 +24,7 @@ export class ArticleAnalyser {
     }
   }
 
-  async _collectNewWords (words: string[]) {
+  private async _collectNewWords (words: string[]) {
     const wordInfos = await Promise.all(
       words.map(async word => ({
         word,
