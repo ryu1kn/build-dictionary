@@ -1,4 +1,4 @@
-import { expect } from 'chai'
+import { equal } from 'assert'
 
 import {ReportGenerator} from '../../lib/report-generator'
 
@@ -10,7 +10,7 @@ describe('ReportGenerator', () => {
       newWords: ['NEW_WORD1', 'NEW_WORD2', 'NEW_WORD3'],
       totalWordCount: 150
     }
-    expect(reportGenerator.generate(analysis, 'DIFFICULTY')).to.be.equal(
+    equal(reportGenerator.generate(analysis, 'DIFFICULTY'),
       [
         'New words: 3/150 (2.0%)',
         'Difficulty: DIFFICULTY',
@@ -30,7 +30,7 @@ describe('ReportGenerator', () => {
       newWords: [],
       totalWordCount: 150
     }
-    expect(reportGenerator.generate(analysis, 'DIFFICULTY')).to.be.equal(
+    equal(reportGenerator.generate(analysis, 'DIFFICULTY'),
       ['New words: 0/150 (0.0%)', 'Difficulty: DIFFICULTY'].join('\n')
     )
   })

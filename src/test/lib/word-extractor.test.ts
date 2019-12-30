@@ -1,4 +1,4 @@
-import { expect } from 'chai'
+import { deepStrictEqual } from 'assert'
 
 import {WordExtractor} from '../../lib/word-extractor'
 
@@ -8,7 +8,7 @@ describe('WordExtractor', () => {
     const wordClassifier = { isWord: token => token !== 'a' }
     const wordExtractor = new WordExtractor(tokeniser, wordClassifier)
     const text = 'this is a text'
-    expect(wordExtractor.extract(text)).to.be.eql(['this', 'is', 'text'])
+    deepStrictEqual(wordExtractor.extract(text), ['this', 'is', 'text'])
   })
 
   it('counts the multiple same words as 1', () => {
@@ -16,7 +16,7 @@ describe('WordExtractor', () => {
     const wordClassifier = { isWord: () => true }
     const wordExtractor = new WordExtractor(tokeniser, wordClassifier)
     const text = 'this is a long long long text'
-    expect(wordExtractor.extract(text)).to.be.eql([
+    deepStrictEqual(wordExtractor.extract(text), [
       'this',
       'is',
       'a',
@@ -30,7 +30,7 @@ describe('WordExtractor', () => {
     const wordClassifier = { isWord: () => true }
     const wordExtractor = new WordExtractor(tokeniser, wordClassifier)
     const text = 'This is Malcolm. That is Bill.'
-    expect(wordExtractor.extract(text)).to.be.eql(['This', 'is', 'That'])
+    deepStrictEqual(wordExtractor.extract(text), ['This', 'is', 'That'])
   })
 
   it("sees the first word in a sentence as a general word even if it's a proper noun", () => {
@@ -38,7 +38,7 @@ describe('WordExtractor', () => {
     const wordClassifier = { isWord: () => true }
     const wordExtractor = new WordExtractor(tokeniser, wordClassifier)
     const text = 'This is Malcolm. Bill is there'
-    expect(wordExtractor.extract(text)).to.be.eql([
+    deepStrictEqual(wordExtractor.extract(text), [
       'This',
       'is',
       'Bill',

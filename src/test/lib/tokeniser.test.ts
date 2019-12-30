@@ -1,4 +1,4 @@
-import { expect } from 'chai'
+import { deepStrictEqual } from 'assert'
 
 import {Tokeniser} from '../../lib/tokeniser'
 
@@ -6,72 +6,72 @@ describe('Tokeniser', () => {
   it('tokenises a list of words from a text', () => {
     const tokeniser = new Tokeniser()
     const text = 'this is a text'
-    expect(tokeniser.tokenise(text)).to.be.eql(['this', 'is', 'a', 'text'])
+    deepStrictEqual(tokeniser.tokenise(text), ['this', 'is', 'a', 'text'])
   })
 
   it('sees "newline" is not a part of a word', () => {
     const tokeniser = new Tokeniser()
     const text = 'a\nb\n\nc'
-    expect(tokeniser.tokenise(text)).to.be.eql(['a', 'b', 'c'])
+    deepStrictEqual(tokeniser.tokenise(text), ['a', 'b', 'c'])
   })
 
   it('sees "," is not a part of a word', () => {
     const tokeniser = new Tokeniser()
     const text = 'this is, great'
-    expect(tokeniser.tokenise(text)).to.be.eql(['this', 'is', 'great'])
+    deepStrictEqual(tokeniser.tokenise(text), ['this', 'is', 'great'])
   })
 
   it('sees "." is not a part of a word', () => {
     const tokeniser = new Tokeniser()
     const text = 'ok. great'
-    expect(tokeniser.tokenise(text)).to.be.eql(['ok', 'great'])
+    deepStrictEqual(tokeniser.tokenise(text), ['ok', 'great'])
   })
 
   it('sees ";" is not a part of a word', () => {
     const tokeniser = new Tokeniser()
     const text = 'this; so'
-    expect(tokeniser.tokenise(text)).to.be.eql(['this', 'so'])
+    deepStrictEqual(tokeniser.tokenise(text), ['this', 'so'])
   })
 
   it('sees "(" or ")" is not a part of a word', () => {
     const tokeniser = new Tokeniser()
     const text = 'a) b (c'
-    expect(tokeniser.tokenise(text)).to.be.eql(['a', 'b', 'c'])
+    deepStrictEqual(tokeniser.tokenise(text), ['a', 'b', 'c'])
   })
 
   it('sees "[" or "]" is not a part of a word', () => {
     const tokeniser = new Tokeniser()
     const text = 'a] b [c'
-    expect(tokeniser.tokenise(text)).to.be.eql(['a', 'b', 'c'])
+    deepStrictEqual(tokeniser.tokenise(text), ['a', 'b', 'c'])
   })
 
   it('sees "{" or "}" is not a part of a word', () => {
     const tokeniser = new Tokeniser()
     const text = 'a} b {c'
-    expect(tokeniser.tokenise(text)).to.be.eql(['a', 'b', 'c'])
+    deepStrictEqual(tokeniser.tokenise(text), ['a', 'b', 'c'])
   })
 
   it('sees "?" is not a part of a word', () => {
     const tokeniser = new Tokeniser()
     const text = 'Why not?'
-    expect(tokeniser.tokenise(text)).to.be.eql(['Why', 'not'])
+    deepStrictEqual(tokeniser.tokenise(text), ['Why', 'not'])
   })
 
   it('sees "#" is not a part of a word', () => {
     const tokeniser = new Tokeniser()
     const text = 'test #comment'
-    expect(tokeniser.tokenise(text)).to.be.eql(['test', 'comment'])
+    deepStrictEqual(tokeniser.tokenise(text), ['test', 'comment'])
   })
 
   it("sees '\"' is not a part of a word", () => {
     const tokeniser = new Tokeniser()
     const text = 'thought "why not"'
-    expect(tokeniser.tokenise(text)).to.be.eql(['thought', 'why', 'not'])
+    deepStrictEqual(tokeniser.tokenise(text), ['thought', 'why', 'not'])
   })
 
   it('sees "\'" is not a part of a word', () => {
     const tokeniser = new Tokeniser()
     const text = "'Rot' is"
-    expect(tokeniser.tokenise(text)).to.be.eql(['Rot', 'is'])
+    deepStrictEqual(tokeniser.tokenise(text), ['Rot', 'is'])
   })
 })

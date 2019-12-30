@@ -1,27 +1,27 @@
-import { expect } from 'chai'
+import { deepStrictEqual, equal } from 'assert'
 
 import {WordClassifier} from '../../lib/word-classifier'
 
 describe('WordClassifier', () => {
   it('sees numbers are not a word', () => {
     const wordClassifier = new WordClassifier()
-    expect(wordClassifier.isWord('1')).to.equal(false)
+    equal(wordClassifier.isWord('1'), false)
   })
 
   it('sees isolated "-" is not a word', () => {
     const wordClassifier = new WordClassifier()
-    expect(wordClassifier.isWord('-')).to.equal(false)
+    equal(wordClassifier.isWord('-'), false)
   })
 
   it('sees time is not a word', () => {
     const wordClassifier = new WordClassifier()
-    expect(wordClassifier.isWord('6:03PM')).to.equal(false)
+    equal(wordClassifier.isWord('6:03PM'), false)
   })
 
   it('sees a roman numeral is not a word', () => {
     const wordClassifier = new WordClassifier()
     const tokens = ['i', 'ii', 'iv', 'v', 'x']
     const words = tokens.filter(wordClassifier.isWord)
-    expect(words).to.be.eql(['i'])
+    deepStrictEqual(words, ['i'])
   })
 })

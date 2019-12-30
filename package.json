@@ -19,8 +19,6 @@
   "author": "Ryuichi Inagaki",
   "devDependencies": {
     "buildmate": "^1.0.0",
-    "chai": "^4.2.0",
-    "mocha": "^6.2.2",
     "testdouble": "^3.12.4",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.22",
