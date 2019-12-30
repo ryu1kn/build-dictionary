@@ -9,8 +9,10 @@
     "prep": "yarn run lint && yarn test",
     "travis-build": "./travis-build.sh",
     "compile": "tsc -p ./",
-    "test": "mocha --require ts-node/register --recursive 'src/test/**/*.ts'",
-    "coverage": "nyc yarn test",
+    "test": "yarn run test:unit && yarn run test:it",
+    "test:unit": "mocha --require ts-node/register --recursive 'src/test/**/*.ts'",
+    "test:it": "test-integration/test.sh",
+    "coverage": "nyc yarn run test:unit",
     "lint": "tslint -p ."
   },
   "keywords": [],
