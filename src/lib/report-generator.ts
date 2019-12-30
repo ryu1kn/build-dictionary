@@ -7,7 +7,7 @@ import _negate = require('lodash.negate')
 const SECTION_SEPARATOR = '\n\n'
 
 export class ReportGenerator {
-  generate (analysis: Analysis, difficulty: Difficulty) {
+  generate (analysis: Analysis, difficulty: Difficulty): string {
     const summarySection = this.getSummarySection(analysis, difficulty)
     const newWordsSection = this.getNewWordSection(analysis)
     return this.convertToString([summarySection, newWordsSection])

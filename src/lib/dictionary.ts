@@ -7,7 +7,7 @@ export class Dictionary {
               private readonly readFile: ReadFile) {
   }
 
-  async exists (word: string) {
+  async exists (word: string): Promise<boolean> {
     const wordList = await this.loadCachedWordList()
     return wordList.includes(word.toLowerCase())
   }

@@ -5,7 +5,7 @@ import {WordClassifier} from './word-classifier'
 import { Dictionary } from './dictionary'
 
 export class ArticleAnalyserFactory {
-  create (dictionary: Dictionary) {
+  create (dictionary: Dictionary): ArticleAnalyser {
     return new ArticleAnalyser(this.createWordExtractor(), dictionary)
   }
 

@@ -14,7 +14,7 @@ export class WordExtractor {
               private readonly wordClassifier: WordClassifier) {
   }
 
-  extract (text: string) {
+  extract (text: string): string[] {
     const sentences = text
       .split(RE_SENTENCE_DELIMETER)
       .filter(sentence => !RE_EMPTY_LINE.test(sentence))

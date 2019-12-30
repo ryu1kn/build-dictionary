@@ -10,7 +10,7 @@ export class AnalyseArticleCommand {
               private readonly logger: Logger) {
   }
 
-  async execute (argv: string[]) {
+  async execute (argv: string[]): Promise<void> {
     const parsedArgv = minimist(argv.slice(2))
     const dictionaryPath = parsedArgv.dictionary
     const articlePath = parsedArgv._[0]
