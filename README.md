@@ -6,7 +6,7 @@
 ## Usage
 
 ```sh
-$ node analyse-article fixtures/article.txt --dictionary fixtures/dictionary.txt
+$ bin/analyse-article fixtures/article.txt --dictionary fixtures/dictionary.txt
 New words: 1/3 (33.3%)
 Difficulty: Very difficult
 
