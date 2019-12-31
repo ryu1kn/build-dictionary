@@ -26,6 +26,16 @@ describe('ArticleAnalyser', () => {
     })
   })
 
+  it.skip('Capitalised word should be compared', async () => {
+    const articleAnalyser = createArticleAnalyser('A/Now')
+    const result = await articleAnalyser.analyse('Now astronomers')
+    deepStrictEqual(result, {
+      newWordCount: 1,
+      newWords: ['astronomers'],
+      totalWordCount: 2
+    })
+  })
+
   function createArticleAnalyser (words: string) {
     const readFile = () => Promise.resolve(toWords(words))
     const dictionary = new Dictionary('foo' , readFile)
