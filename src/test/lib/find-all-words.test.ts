@@ -10,6 +10,61 @@ describe('WordExtractor', () => {
     deepStrictEqual(wordExtractor.extract(text), ['this', 'is', 'a', 'text'])
   })
 
+  it('sees "newline" is not a part of a word', () => {
+    const text = 'a\nb\n\nc'
+    deepStrictEqual(wordExtractor.extract(text), ['a', 'b', 'c'])
+  })
+
+  it('sees "," is not a part of a word', () => {
+    const text = 'this is, great'
+    deepStrictEqual(wordExtractor.extract(text), ['this', 'is', 'great'])
+  })
+
+  it('sees "." is not a part of a word', () => {
+    const text = 'ok. great'
+    deepStrictEqual(wordExtractor.extract(text), ['ok', 'great'])
+  })
+
+  it('sees ";" is not a part of a word', () => {
+    const text = 'this; so'
+    deepStrictEqual(wordExtractor.extract(text), ['this', 'so'])
+  })
+
+  it('sees "(" or ")" is not a part of a word', () => {
+    const text = 'a) b (c'
+    deepStrictEqual(wordExtractor.extract(text), ['a', 'b', 'c'])
+  })
+
+  it('sees "[" or "]" is not a part of a word', () => {
+    const text = 'a] b [c'
+    deepStrictEqual(wordExtractor.extract(text), ['a', 'b', 'c'])
+  })
+
+  it('sees "{" or "}" is not a part of a word', () => {
+    const text = 'a} b {c'
+    deepStrictEqual(wordExtractor.extract(text), ['a', 'b', 'c'])
+  })
+
+  it('sees "?" is not a part of a word', () => {
+    const text = 'Why not?'
+    deepStrictEqual(wordExtractor.extract(text), ['Why', 'not'])
+  })
+
+  it('sees "#" is not a part of a word', () => {
+    const text = 'test #comment'
+    deepStrictEqual(wordExtractor.extract(text), ['test', 'comment'])
+  })
+
+  it("sees '\"' is not a part of a word", () => {
+    const text = 'thought "why not"'
+    deepStrictEqual(wordExtractor.extract(text), ['thought', 'why', 'not'])
+  })
+
+  it('sees "\'" is not a part of a word', () => {
+    const text = "'Rot' is"
+    deepStrictEqual(wordExtractor.extract(text), ['Rot', 'is'])
+  })
+
   it('counts the multiple same words as 1', () => {
     const text = 'this is a long long long text'
     deepStrictEqual(wordExtractor.extract(text), [
