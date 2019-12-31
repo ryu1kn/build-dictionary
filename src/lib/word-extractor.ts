@@ -10,9 +10,8 @@ const RE_EMPTY_LINE = /^\s*$/
 const RE_SENTENCE_DELIMETER = /\.\s+/
 
 export class WordExtractor {
-  constructor(private readonly tokeniser: Tokeniser,
-              private readonly wordClassifier: WordClassifier) {
-  }
+  private readonly tokeniser = new Tokeniser()
+  private readonly wordClassifier = new WordClassifier()
 
   extract (text: string): string[] {
     const sentences = text
