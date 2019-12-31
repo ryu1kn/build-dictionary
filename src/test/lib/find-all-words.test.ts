@@ -35,4 +35,27 @@ describe('WordExtractor', () => {
       'there'
     ])
   })
+
+  it('sees numbers are not a word', () => {
+    deepStrictEqual(wordExtractor.extract('number 1'), ['number'])
+  })
+
+  it('sees isolated "-" is not a word', () => {
+    deepStrictEqual(wordExtractor.extract('here - there'), ['here', 'there'])
+  })
+
+  it('sees time is not a word', () => {
+    deepStrictEqual(wordExtractor.extract('Meet at 6:03PM'), ['Meet', 'at'])
+  })
+
+  it('sees a roman numeral is not a word', () => {
+    const article = `
+      i. one
+      ii. two
+      iv. four
+      v. five
+      x. ten
+    `
+    deepStrictEqual(wordExtractor.extract(article), ['i', 'one', 'two', 'four', 'five', 'ten'])
+  })
 })
