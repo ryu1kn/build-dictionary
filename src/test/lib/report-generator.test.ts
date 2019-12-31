@@ -3,8 +3,9 @@ import { equal } from 'assert'
 import {ReportGenerator} from '../../lib/report-generator'
 
 describe('ReportGenerator', () => {
+  const reportGenerator = new ReportGenerator()
+
   it('returns a string describing the result of analysis', () => {
-    const reportGenerator = new ReportGenerator()
     const analysis = {
       newWordCount: 3,
       newWords: ['NEW_WORD1', 'NEW_WORD2', 'NEW_WORD3'],
@@ -24,7 +25,6 @@ describe('ReportGenerator', () => {
   })
 
   it("doesn't provide new words list if there are no new words", () => {
-    const reportGenerator = new ReportGenerator()
     const analysis = {
       newWordCount: 0,
       newWords: [] as string[],
