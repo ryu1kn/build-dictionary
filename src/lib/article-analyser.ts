@@ -13,7 +13,7 @@ export class ArticleAnalyser {
               private readonly dictionary: Dictionary) {
   }
 
-  async analyse (article: string): Promise<Analysis> {
+  async analyse(article: string): Promise<Analysis> {
     const words = this.wordExtractor.extract(article)
     const newWords = await this.collectNewWords(words)
     return {
@@ -23,7 +23,7 @@ export class ArticleAnalyser {
     }
   }
 
-  private async collectNewWords (words: string[]) {
+  private async collectNewWords(words: string[]) {
     const wordInfos = await Promise.all(
       words.map(async word => ({
         word,

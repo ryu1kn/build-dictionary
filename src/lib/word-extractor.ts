@@ -13,7 +13,7 @@ export class WordExtractor {
   private readonly tokeniser = new Tokeniser()
   private readonly wordClassifier = new WordClassifier()
 
-  extract (text: string): string[] {
+  extract(text: string): string[] {
     const sentences = text
       .split(RE_SENTENCE_DELIMETER)
       .filter(sentence => !RE_EMPTY_LINE.test(sentence))
@@ -24,7 +24,7 @@ export class WordExtractor {
     return _uniq(generalWords)
   }
 
-  private extractFromSentence (sentence: string) {
+  private extractFromSentence(sentence: string) {
     const [firstWord, ...remainingWords] = this.tokeniser
       .tokenise(sentence)
       .filter(this.wordClassifier.isWord)
@@ -35,7 +35,7 @@ export class WordExtractor {
     return _uniq(generalWords)
   }
 
-  private isProperNoun (word: string) {
+  private isProperNoun(word: string) {
     return RE_UPPER_CASE.test(word[0])
   }
 }

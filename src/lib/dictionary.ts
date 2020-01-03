@@ -7,19 +7,19 @@ export class Dictionary {
               private readonly readFile: ReadFile) {
   }
 
-  async exists (word: string): Promise<boolean> {
+  async exists(word: string): Promise<boolean> {
     const wordList = await this.loadCachedWordList()
     return wordList.includes(word.toLowerCase())
   }
 
-  private async loadCachedWordList () {
+  private async loadCachedWordList() {
     if (this._wordList) return this._wordList
 
     this._wordList = await this.loadWordList()
     return this._wordList
   }
 
-  private async loadWordList () {
+  private async loadWordList() {
     const dictionaryFile = await this.readFile(this.filePath)
     return dictionaryFile.split('\n')
   }

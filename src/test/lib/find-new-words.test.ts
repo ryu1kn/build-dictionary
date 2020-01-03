@@ -36,7 +36,7 @@ describe('ArticleAnalyser', () => {
     })
   })
 
-  function createArticleAnalyser (words: string) {
+  function createArticleAnalyser(words: string) {
     const readFile = () => Promise.resolve(toWords(words))
     const dictionary = new Dictionary('foo' , readFile)
     return factory.create(dictionary)
