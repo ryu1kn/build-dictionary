@@ -51,6 +51,14 @@ describe('WordExtractor', () => {
     assertWords('thought "why not"', ['thought', 'why', 'not'])
   })
 
+  it("sees '“' is not a part of a word", () => {
+    assertWords('“tinny', ['tinny'])
+  })
+
+  it("sees '”' is not a part of a word", () => {
+    assertWords('races”', ['races'])
+  })
+
   it('sees "\'" is not a part of a word', () => {
     assertWords("'Rot' is", ['rot', 'is'])
   })
