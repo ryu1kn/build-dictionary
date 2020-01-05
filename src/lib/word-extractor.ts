@@ -32,7 +32,7 @@ export class WordExtractor {
       firstWord,
       ...remainingWords.filter(_negate(this.isProperNoun))
     ]
-    return _uniq(generalWords)
+    return _uniq(generalWords.map(s => s.toLowerCase()))
   }
 
   private isProperNoun(word: string) {

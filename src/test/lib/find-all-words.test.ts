@@ -40,7 +40,7 @@ describe('WordExtractor', () => {
   })
 
   it('sees "?" is not a part of a word', () => {
-    assertWords('Why not?', ['Why', 'not'])
+    assertWords('Why not?', ['why', 'not'])
   })
 
   it('sees "#" is not a part of a word', () => {
@@ -52,7 +52,7 @@ describe('WordExtractor', () => {
   })
 
   it('sees "\'" is not a part of a word', () => {
-    assertWords("'Rot' is", ['Rot', 'is'])
+    assertWords("'Rot' is", ['rot', 'is'])
   })
 
   it('counts the multiple same words as 1', () => {
@@ -66,14 +66,14 @@ describe('WordExtractor', () => {
   })
 
   it("doesn't recognise a proper noun as a general word", () => {
-    assertWords('This is Malcolm. That is Bill.', ['This', 'is', 'That'])
+    assertWords('This is Malcolm. That is Bill.', ['this', 'is', 'that'])
   })
 
   it("sees the first word in a sentence as a general word even if it's a proper noun", () => {
     assertWords('This is Malcolm. Bill is there', [
-      'This',
+      'this',
       'is',
-      'Bill',
+      'bill',
       'there'
     ])
   })
@@ -87,7 +87,7 @@ describe('WordExtractor', () => {
   })
 
   it('sees time is not a word', () => {
-    assertWords('Meet at 6:03PM', ['Meet', 'at'])
+    assertWords('Meet at 6:03PM', ['meet', 'at'])
   })
 
   it('sees a roman numeral is not a word', () => {

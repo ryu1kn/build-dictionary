@@ -26,8 +26,8 @@ describe('ArticleAnalyser', () => {
     })
   })
 
-  it.skip('Capitalised word should be compared', async () => {
-    const articleAnalyser = createArticleAnalyser('A/Now')
+  it('Capitalised word should be compared', async () => {
+    const articleAnalyser = createArticleAnalyser('a/now')
     const result = await articleAnalyser.analyse('Now astronomers')
     deepStrictEqual(result, {
       newWordCount: 1,
