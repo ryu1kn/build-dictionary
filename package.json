@@ -40,6 +40,6 @@
     "lodash.isempty": "^4.4.0",
     "lodash.negate": "^3.0.2",
     "lodash.uniq": "^4.5.0",
-    "minimist": "^1.2.3"
+    "minimist": "^1.2.6"
   }
 }
